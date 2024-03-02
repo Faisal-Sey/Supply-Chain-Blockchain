@@ -1,6 +1,5 @@
 package com.starter.supplychainblockchain.models.authentication;
 
-import com.starter.supplychainblockchain.models.authentication.Role;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

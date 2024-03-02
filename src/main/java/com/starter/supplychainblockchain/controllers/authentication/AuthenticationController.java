@@ -1,10 +1,7 @@
 package com.starter.supplychainblockchain.controllers.authentication;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.starter.supplychainblockchain.services.AuthenticationService;
 import com.starter.supplychainblockchain.utilities.APIResponse;
-import org.apache.coyote.Response;
-import org.hibernate.mapping.Any;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
