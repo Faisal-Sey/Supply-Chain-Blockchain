@@ -1,5 +1,6 @@
 package com.starter.supplychainblockchain.controllers.authentication;
 
+import com.starter.supplychainblockchain.dtos.authentication.RefreshTokenDTO;
 import com.starter.supplychainblockchain.services.AuthenticationService;
 import com.starter.supplychainblockchain.utilities.APIResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,21 +32,28 @@ public class AuthenticationController {
     public ResponseEntity<Map<String, Object>> register (
             @RequestBody RegisterRequest request
     ) {
-        Map<String, Object> responseData = authenticationService.register(request);
+        Map<String, String> responseData = authenticationService.register(request);
         return apiResponse.success(
                 "User registered successfully",
                 responseData
         );
     }
 
-    @PostMapping("/authenticate")
+    @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> register (
             @RequestBody AuthenticationRequest request
     ) {
-        Map<String, Object> responseData = authenticationService.authenticate(request);
+        Map<String, String> responseData = authenticationService.authenticate(request);
         return apiResponse.success(
-                "User authenticated successfully",
+                "User logged in successfully",
                 responseData
         );
     }
+    @PostMapping("/refresh")
+    public ResponseEntity<Map<String, Object>> refresh(
+            @RequestBody RefreshTokenDTO request
+    ) {
+        return authenticationService.refresh(request);
+    }
+
 }

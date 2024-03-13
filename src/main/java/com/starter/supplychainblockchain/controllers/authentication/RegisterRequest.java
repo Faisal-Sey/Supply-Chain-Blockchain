@@ -1,5 +1,7 @@
 package com.starter.supplychainblockchain.controllers.authentication;
 
+import com.starter.supplychainblockchain.models.authentication.Role;
+
 public class RegisterRequest {
 
     public RegisterRequest(
@@ -7,13 +9,15 @@ public class RegisterRequest {
             String lastname,
             String username,
             String password,
-            String email
+            String email,
+            Role role
     ) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.role = role;
     }
 
     private String firstname;
@@ -21,6 +25,15 @@ public class RegisterRequest {
     private String username;
     private String password;
     private String email;
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public String getEmail() {
         return email;

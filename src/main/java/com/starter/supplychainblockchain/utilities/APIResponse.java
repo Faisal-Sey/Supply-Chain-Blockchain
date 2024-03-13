@@ -35,6 +35,10 @@ public class APIResponse {
         return generateResponse(HttpStatus.BAD_REQUEST, message, null);
     }
 
+    public ResponseEntity<Map<String, Object>> methodNotAllowed (String message) {
+        return generateResponse(HttpStatus.METHOD_NOT_ALLOWED, message, null);
+    }
+
     public ResponseEntity<Map<String, Object>> error (String message, Object data) {
         return generateResponse(HttpStatus.BAD_REQUEST, message, data);
     }

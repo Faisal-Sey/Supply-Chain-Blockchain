@@ -47,12 +47,20 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+    public String generateToken(
+            UserDetails userDetails,
+            Integer expiryTime
+    ) {
+        return generateToken(
+                new HashMap<>(),
+                expiryTime,
+                userDetails
+        );
     }
 
     public String generateToken(
             Map<String, Object> extraClaims,
+            Integer expiryTime,
             UserDetails userDetails
     ) {
         return Jwts
@@ -60,7 +68,7 @@ public class JwtService {
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                .setExpiration(new Date(System.currentTimeMillis() + expiryTime))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
