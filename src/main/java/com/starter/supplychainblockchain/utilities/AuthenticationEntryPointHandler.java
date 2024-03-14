@@ -12,7 +12,7 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 public class AuthenticationEntryPointHandler implements AuthenticationEntryPoint {
     private final HandlerExceptionResolver resolver;
 
-    public AuthenticationEntryPointHandler(@Qualifier("errorAttributes") HandlerExceptionResolver resolver) {
+    public AuthenticationEntryPointHandler(@Qualifier("handlerExceptionResolver") HandlerExceptionResolver resolver) {
         this.resolver = resolver;
     }
 

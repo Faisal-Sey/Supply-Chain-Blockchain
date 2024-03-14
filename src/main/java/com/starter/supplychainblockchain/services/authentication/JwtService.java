@@ -1,4 +1,4 @@
-package com.starter.supplychainblockchain.services;
+package com.starter.supplychainblockchain.services.authentication;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

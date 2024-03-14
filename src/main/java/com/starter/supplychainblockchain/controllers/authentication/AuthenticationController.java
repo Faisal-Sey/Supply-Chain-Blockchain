@@ -1,7 +1,7 @@
 package com.starter.supplychainblockchain.controllers.authentication;
 
 import com.starter.supplychainblockchain.dtos.authentication.RefreshTokenDTO;
-import com.starter.supplychainblockchain.services.AuthenticationService;
+import com.starter.supplychainblockchain.services.authentication.AuthenticationService;
 import com.starter.supplychainblockchain.utilities.APIResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

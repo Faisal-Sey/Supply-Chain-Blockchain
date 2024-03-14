@@ -13,7 +13,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
     private final HandlerExceptionResolver resolver;
 
     public CustomAccessDeniedHandler(
-            @Qualifier("errorAttributes")
+            @Qualifier("handlerExceptionResolver")
             HandlerExceptionResolver resolver
     ) {
         this.resolver = resolver;

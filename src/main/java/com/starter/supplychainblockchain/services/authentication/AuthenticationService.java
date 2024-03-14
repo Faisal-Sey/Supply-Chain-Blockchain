@@ -1,4 +1,4 @@
-package com.starter.supplychainblockchain.services;
+package com.starter.supplychainblockchain.services.authentication;
 
 import com.starter.supplychainblockchain.controllers.authentication.AuthenticationRequest;
 import com.starter.supplychainblockchain.controllers.authentication.RegisterRequest;

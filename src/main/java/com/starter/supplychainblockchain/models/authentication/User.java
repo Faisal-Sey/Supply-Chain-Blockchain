@@ -1,5 +1,6 @@
 package com.starter.supplychainblockchain.models.authentication;
 
+import com.starter.supplychainblockchain.models.profile.Profile;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -43,6 +44,9 @@ public class User implements UserDetails {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Profile profile;
 
     public UUID getUserKey() {
         return userKey;
