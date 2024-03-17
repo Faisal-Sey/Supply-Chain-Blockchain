@@ -7,9 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 
 @Entity
@@ -45,7 +43,7 @@ public class User implements UserDetails {
 
     private LocalDateTime updatedAt;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Profile profile;
 
     public UUID getUserKey() {
@@ -182,5 +180,15 @@ public class User implements UserDetails {
         public User build() {
             return user;
         }
+    }
+
+    public Map<String, Object> toJson() {
+        Map<String, Object> user = new HashMap<>();
+        user.put("email", this.getEmail());
+        user.put("role", this.getRole());
+        user.put("isAdmin", this.getAdmin());
+        user.put("username", this.getUsername());
+        user.put("userKey", this.getUserKey());
+        return user;
     }
 }

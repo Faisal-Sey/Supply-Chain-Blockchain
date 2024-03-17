@@ -1,22 +1,8 @@
-package com.starter.supplychainblockchain.models.profile;
+package com.starter.supplychainblockchain.dtos.profile;
 
-import com.starter.supplychainblockchain.models.authentication.User;
-import com.starter.supplychainblockchain.models.common.BaseModel;
-import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
-
-@Entity
-@Table(name = "profiles")
-public class Profile extends BaseModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
-    @Column(nullable = false)
+public class GetProfileDTO {
     private String firstName;
 
-    @Column(nullable = false)
     private String lastName;
 
     private String middleName;
@@ -32,25 +18,15 @@ public class Profile extends BaseModel {
     private String country;
     private String profilePicture;
 
-    public Long getId() {
-        return id;
-    }
+    private UserDTO user;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
+    public UserDTO getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
     }
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "_user_user_key")
-    User user;
 
     public String getFirstName() {
         return firstName;
@@ -162,15 +138,5 @@ public class Profile extends BaseModel {
 
     public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
-    }
-
-    @PrePersist
-    void onCreate() {
-        this.setCreatedOn(LocalDateTime.now());
-    }
-
-    @PreUpdate
-    void onUpdate() {
-        this.setUpdatedOn(LocalDateTime.now());
     }
 }

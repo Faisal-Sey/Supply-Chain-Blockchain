@@ -6,18 +6,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AppHelpers {
-    public UserDetails getAuthenticatedUser() {
-
+    public String getAuthenticatedUser() {
         // Retrieve the currently authenticated user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-
-        // Check if the authentication object is not null and contains the principal (user details)
-        if (authentication != null && authentication.getPrincipal() instanceof UserDetails userDetails) {
-            return userDetails;
-        } else {
-            return null;
-        }
-
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        return userDetails.getUsername();
     }
 }

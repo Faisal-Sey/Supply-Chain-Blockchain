@@ -1,4 +1,5 @@
 package com.starter.supplychainblockchain.utilities;
+import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
@@ -6,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
 import java.util.Map;
 
 @RestControllerAdvice
@@ -33,5 +35,10 @@ public class ExceptionHandlerAdvice {
                 "Insufficient authentication credentials passed: ",
                 e.getMessage()
         );
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    ResponseEntity<Map<String, Object>> handleAccountExpirationException() {
+        return apiResponse.methodNotAllowed("Invalid token or token expired");
     }
 }

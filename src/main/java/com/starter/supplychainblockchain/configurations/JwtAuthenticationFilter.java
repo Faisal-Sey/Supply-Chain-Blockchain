@@ -1,6 +1,7 @@
 package com.starter.supplychainblockchain.configurations;
 
 import com.starter.supplychainblockchain.services.authentication.JwtService;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,7 +46,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } else {
             jwt = authHeader.substring(7);
 
-            username = jwtService.extractUsername(jwt);
+            try {
+                username = jwtService.extractUsername(jwt);
+            } catch (ExpiredJwtException ex) {
+                filterChain.doFilter(request, response);
+                return;
+            }
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
                 if (jwtService.isTokenValid(jwt, userDetails)) {

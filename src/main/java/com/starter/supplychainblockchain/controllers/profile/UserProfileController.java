@@ -1,5 +1,6 @@
 package com.starter.supplychainblockchain.controllers.profile;
 
+import com.starter.supplychainblockchain.dtos.profile.AddProfileDTO;
 import com.starter.supplychainblockchain.services.profile.UserProfileService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,8 +24,10 @@ public class UserProfileController {
     }
 
     @PostMapping("/add-user-profile")
-    public ResponseEntity<Map<String, Object>> addUserProfileController() {
-        return this.userProfileService.addUserProfile();
+    public ResponseEntity<Map<String, Object>> addUserProfileController(
+            @RequestBody AddProfileDTO requestBody
+    ) {
+        return this.userProfileService.addUserProfile(requestBody);
     }
 
     @PatchMapping("/update-user-profile")
