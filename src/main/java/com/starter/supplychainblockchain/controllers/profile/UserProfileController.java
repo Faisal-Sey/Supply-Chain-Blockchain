@@ -20,28 +20,28 @@ public class UserProfileController {
 
     @GetMapping("/get-user-profile")
     public ResponseEntity<Map<String, Object>> getUserProfileController() {
-        return this.userProfileService.getSingleUserProfile();
+        return userProfileService.getSingleUserProfile();
     }
 
     @PostMapping("/add-user-profile")
     public ResponseEntity<Map<String, Object>> addUserProfileController(
             @RequestBody AddProfileDTO requestBody
     ) {
-        return this.userProfileService.addUserProfile(requestBody);
+        return userProfileService.addUserProfile(requestBody);
     }
 
     @PatchMapping("/update-user-profile")
     public ResponseEntity<Map<String, Object>> updateUserProfileController() {
-        return this.userProfileService.updateUserProfile();
+        return userProfileService.updateUserProfile();
     }
 
     @GetMapping("/get-user-profiles")
     public ResponseEntity<Map<String, Object>> getUserProfilesController() {
-        return this.userProfileService.getUserProfiles();
+        return userProfileService.getUserProfiles();
     }
 
     @DeleteMapping("/delete-user-profile")
     public ResponseEntity<Map<String, Object>> deleteUserProfileController() {
-        return this.userProfileService.deleteUserProfile();
+        return userProfileService.deleteUserProfile();
     }
 }
